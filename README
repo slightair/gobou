@@ -1,0 +1,14 @@
+gobou
+
+LICENSE
+
+New BSD License. See LICENSE file.
+
+DESCRIPTION
+
+IRC Bot written by nodejs
+
+use following libraries.
+
+node-irc - https://github.com/martynsmith/node-irc
+jsdom - https://github.com/tmpvar/jsdom

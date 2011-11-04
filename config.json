@@ -1,0 +1,11 @@
+{
+  "nick": "gobou",
+  "server": "chat.freenode.net",
+  "options": {
+    "userName": "gobou",
+    "realName": "gobou",
+    "port": 6667,
+    "channels": ["#gobouChannel"]
+  },
+  "modules": ["twitter", "twitpic", "oppai"]
+}
