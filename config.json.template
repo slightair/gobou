@@ -5,7 +5,7 @@
     "userName": "gobou",
     "realName": "gobou",
     "port": 6667,
-    "channels": ["#clvcctest"]
+    "channels": ["#gobouChannel"]
   },
-  "modules": ["counter"]
+  "modules": ["twitter", "twitpic", "oppai"]
 }
