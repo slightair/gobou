@@ -3,7 +3,7 @@ var fs = require('fs');
 var irc = require('irc');
 var configFile = './config.json';
 
-TMP_PATH = "/tmp/"
+TMP_PATH = "./tmp/"
 LIBRARY_PATH = "./lib/"
 MODULE_PATH = "./modules/"
 
@@ -37,12 +37,12 @@ Gobou.prototype.loadModules = function() {
     var moduleName = gobou.config.modules[i];
     var modulePathBase = MODULE_PATH + moduleName;
     var time = new Date().getTime();
-    var linkData = modulePathBase + ".js";
-    var path = TMP_PATH + moduleName + time;
+    var srcPath = modulePathBase + ".js";
+    var dstPath = TMP_PATH + moduleName + time;
     
-    fs.linkSync(linkData, path);
-    modules[moduleName] = require(path);
-    fs.unlinkSync(path);
+    fs.linkSync(srcPath, dstPath);
+    modules[moduleName] = require(dstPath);
+    fs.unlinkSync(dstPath);
   }
   gobou.modules = modules;
 }
