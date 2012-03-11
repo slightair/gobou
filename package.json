@@ -1,0 +1,13 @@
+{
+  "author": "slightair",
+  "name": "gobou",
+  "description": "irc bot",
+  "version": "0.0.2",
+  "engines": {
+    "node": "0.4.0"
+  },
+  "dependencies": {
+      "irc": ">= 0.3.2"
+    , "jsdom": ">= 0.2.9"
+  }
+}
