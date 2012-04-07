@@ -13,10 +13,10 @@ exports.reply = function(client, nick, to, result) {
     html: "http://twitpic.com" + result[1],
     src: [jQuery],
     done: function(error, window) {
-      var screenName = window.$("a#photo_username").text();
-      var tweet = window.$("div#view-photo-caption").text().replace(/^\s+|\s+$/g, "");
-      var message = screenName + ": " + tweet;
-      
+      var screenName = window.$("div#infobar-user-info > h2").text();
+      var screenId = window.$("div#infobar-user-info > h4").text();
+      var tweet = window.$("div#media-caption > p").text().replace(/^\s+|\s+$/g, "");
+      var message = screenName + "(" + screenId +")" + ": " + tweet;
       client.notice(to, message);
     }
   });
