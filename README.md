@@ -1,6 +1,6 @@
 gobou
 ====
-IRC Bot written by nodejs
+simple IRC bot in Node.js
 [![endorse](http://api.coderwall.com/slightair/endorsecount.png)](http://coderwall.com/slightair)
 
 LICENSE
