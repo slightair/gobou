@@ -14,7 +14,7 @@ exports.reply = function(client, nick, to, result) {
     src: [jQuery],
     done: function(error, window) {
       var screenName = window.$("div.username").text();
-      var tweet = window.$("div.tweet-text:first").text();
+      var tweet = window.$("div#main-content div.tweet-text").text();
       var lines = tweet.split("\n");
       if (lines.length > 1) {
           client.notice(to, screenName + ":");
