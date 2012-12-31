@@ -10,10 +10,10 @@ exports.replyPattern = /https?:\/\/twitter.com(\/#!)?(\/[^\/]+\/status(es)?\/\d+
 
 exports.reply = function(client, nick, to, result) {
   jsdom.env({
-    html: "http://mobile.twitter.com" + result[2],
+    html: "https://mobile.twitter.com" + result[2],
     src: [jQuery],
     done: function(error, window) {
-      var screenName = window.$("div.username").text();
+      var screenName = window.$.trim(window.$("span.username:first").text());
       var tweet = window.$("div#main-content div.tweet-text").text();
       var lines = tweet.split("\n");
       if (lines.length > 1) {
