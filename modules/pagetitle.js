@@ -32,7 +32,16 @@ exports.reply = function(client, nick, to, result) {
     
     // response header
     var contentType = response.headers['content-type'];
-    if (contentType != undefined && contentType.match(/charset=(.+)$/)) {
+    if (contentType == undefined) {
+      client.notice(to, 'Content-Type 取得失敗…');
+      return;
+    }
+    
+    if (contentType.match(/^text\/html/) == null) {
+      return;
+    }
+    
+    if (contentType.match(/charset=(.+)$/)) {
       charset = RegExp.$1;
     }
     
@@ -67,6 +76,6 @@ exports.reply = function(client, nick, to, result) {
     
     var pageTitle = $('title').text();
     
-    client.notice(to, pageTitle);
+    client.notice(to, "title: " + pageTitle);
   });
 }
