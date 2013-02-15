@@ -46,7 +46,7 @@ exports.reply = function(client, nick, to, result) {
     
     // meta tag
     if (charset == undefined) {
-      $ = cheerio.load(body);
+      $ = cheerio.load(body, {lowerCaseTags:true, xmlMode:true});
       charset = $('meta[charset]').attr('charset');
       
       if (charset == undefined) {
@@ -64,7 +64,7 @@ exports.reply = function(client, nick, to, result) {
     
     converter = new Iconv(charset, 'UTF-8//TRANSLIT//IGNORE');
     body = converter.convert(new Buffer(body, 'binary')).toString();
-    $ = cheerio.load(body);
+    $ = cheerio.load(body, {lowerCaseTags:true, xmlMode:true});
     
     var pageTitle = $('title').text();
     pageTitle = pageTitle.replace(/\r|\n/g, "");
