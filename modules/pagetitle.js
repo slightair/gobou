@@ -3,6 +3,7 @@
 
 var request = require('request');
 var cheerio = require('cheerio');
+var CharsetMatch = require('node-icu-charset-detector').CharsetMatch;
 var Iconv = require('iconv').Iconv;
 
 var excludeURLPatterns = [
@@ -55,6 +56,13 @@ exports.reply = function(client, nick, to, result) {
           charset = RegExp.$1;
         }
       }
+    }
+    
+    // icu
+    if (charset == undefined) {
+      var buffer = new Buffer(body, 'binary');
+      var charsetMatch = new CharsetMatch(buffer);
+      charset = charsetMatch.getName();
     }
     
     if (charset == undefined) {
