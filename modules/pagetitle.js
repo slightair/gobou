@@ -67,6 +67,7 @@ exports.reply = function(client, nick, to, result) {
     $ = cheerio.load(body);
     
     var pageTitle = $('title').text();
+    pageTitle = pageTitle.replace(/\r|\n/g, "");
     
     client.notice(to, "title: " + pageTitle);
   });
