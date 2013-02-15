@@ -72,6 +72,9 @@ Gobou.prototype.start = function(configFile) {
     client.addListener('message', function(nick, to, text) {
       gobou.eventMessage(gobou, nick, to, text);
     });
+    client.addListener('invite', function(channel, from, message) {
+      client.join(channel);
+    });
     
     client.connect();
   });
