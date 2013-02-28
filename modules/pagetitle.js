@@ -22,7 +22,7 @@ exports.reply = function(client, nick, to, result) {
     }
   }
   
-  request.get({url : pageURL, encoding : null}, function(err, response, body){
+  request.get({url : pageURL, encoding : null, headers : {"User-Agent" : "gobou"}}, function(err, response, body){
     if (err) {
       client.notice(to, 'ページ取得失敗…');
       return;
