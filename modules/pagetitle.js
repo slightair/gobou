@@ -70,7 +70,10 @@ exports.reply = function(client, nick, to, result) {
       client.notice(to, 'タイトル取得失敗…');
       return;
     }
-    
+
+    if (charset == "Windows-31J" || charset == "x-sjis") {
+      charset = "CP932";
+    }
     converter = new Iconv(charset, 'UTF-8//TRANSLIT//IGNORE');
     body = converter.convert(new Buffer(body, 'binary')).toString();
     $ = cheerio.load(body, {lowerCaseTags:true, xmlMode:true});
