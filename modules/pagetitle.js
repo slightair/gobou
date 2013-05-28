@@ -7,7 +7,8 @@ var CharsetMatch = require('node-icu-charset-detector').CharsetMatch;
 var Iconv = require('iconv').Iconv;
 
 var excludeURLPatterns = [
-  /https?:\/\/twitter.com(\/#!)?(\/[^\/]+\/status(es)?\/\d+)/
+  /https?:\/\/twitter.com(\/#!)?(\/[^\/]+\/status(es)?\/\d+)/,
+  /https?:\/\/(localhost|127.0.0.\d{1,3}).*/
 ]
 
 exports.replyPattern = /https?:\/\/([a-z0-9\-.]+)[a-zA-Z0-9\.$,;:&=?!*~@#_\(\)\/\-%+]+/;
