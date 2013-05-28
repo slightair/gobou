@@ -80,7 +80,12 @@ exports.reply = function(client, nick, to, result) {
 
     var pageTitle = $('title').text();
     pageTitle = pageTitle.replace(/\r|\n/g, "");
-    
+    pageTitle = pageTitle.replace(/\s+/g, " ");
+
+    if (pageTitle.match(/^\s*(.+)\s*$/)) {
+      pageTitle = RegExp.$1;
+    }
+
     client.notice(to, "title: " + pageTitle);
   });
 }
