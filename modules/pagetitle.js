@@ -14,7 +14,7 @@ var excludeURLPatterns = [
 exports.replyPattern = /https?:\/\/([a-z0-9\-.]+)[^\s]+/;
 
 exports.reply = function(client, nick, to, result) {
-  var pageURL = encodeURI(result[0]);
+  var pageURL = result[0];
 
   for (var i=0;i<excludeURLPatterns.length;i++) {
     var pattern = excludeURLPatterns[i];
@@ -71,11 +71,18 @@ exports.reply = function(client, nick, to, result) {
       return;
     }
 
-    if (charset == "Windows-31J" || charset == "x-sjis") {
+    if (charset.toLowerCase() == "windows-31j" || charset.toLowerCase() == "x-sjis") {
       charset = "CP932";
     }
-    converter = new Iconv(charset, 'UTF-8//TRANSLIT//IGNORE');
-    body = converter.convert(new Buffer(body, 'binary')).toString();
+
+    try {
+      converter = new Iconv(charset, 'UTF-8//TRANSLIT//IGNORE');
+      body = converter.convert(new Buffer(body, 'binary')).toString();
+    }
+    catch(e) {
+      // 文字コード変換を行わずそのまま表示する。(文字化けする可能性がある)
+    }
+
     $ = cheerio.load(body, {lowerCaseTags:true, xmlMode:true});
 
     var pageTitle = $('title').text();
