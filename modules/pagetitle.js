@@ -71,7 +71,10 @@ exports.reply = function(client, nick, to, result) {
       return;
     }
 
-    if (charset.toLowerCase() == "windows-31j" || charset.toLowerCase() == "x-sjis") {
+    var lowerCharset = charset.toLowerCase();
+    if (lowerCharset == "windows-31j" ||
+        lowerCharset == "x-sjis" ||
+        lowerCharset == "ms932") {
       charset = "CP932";
     }
 
